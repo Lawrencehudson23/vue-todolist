@@ -13,6 +13,7 @@
 </template>
 
 <script>
+// import { v4 as uuid } from "uuid";
 export default {
   name: "AddTodo",
   data() {
@@ -20,11 +21,19 @@ export default {
       title: "",
     };
   },
-  methods: { addTodo(){
-      const newTodo={
-          id:
-      }
-  } }
+  methods: {
+    addTodo(e) {
+      e.preventDefault();
+      const newTodo = {
+        // id: uuid(),
+        title: this.title,
+        completed: false,
+      };
+      //send up to parents
+      this.$emit("add-todo", newTodo);
+      this.title = "";
+    },
+  },
 };
 </script>
 
